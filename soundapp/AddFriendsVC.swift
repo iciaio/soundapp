@@ -26,7 +26,7 @@ class friendListVC: UITableViewController {
         var friend1 = query!.getObjectWithId("0RQxiwlpqW") as! PFUser
         var friend2 = query!.getObjectWithId("P9kujwIwKZ") as! PFUser
         var friend3 = query!.getObjectWithId("5FseKgVDu6") as! PFUser
-
+        
         friendArray.append(friend1)
         friendArray.append(friend2)
         friendArray.append(friend3)
@@ -37,7 +37,7 @@ class friendListVC: UITableViewController {
         
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -46,7 +46,7 @@ class friendListVC: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friendArray.count
     }
-
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         
@@ -56,12 +56,12 @@ class friendListVC: UITableViewController {
     }
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

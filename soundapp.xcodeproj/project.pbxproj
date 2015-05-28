@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0C436231B16BE6A0045CB63 /* userCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C436221B16BE6A0045CB63 /* userCell.swift */; };
+		C0C436291B178E8C0045CB63 /* addFriendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C436281B178E8C0045CB63 /* addFriendVC.swift */; };
 		C0CB93A01B0ADF010079C45B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CB939F1B0ADF010079C45B /* AppDelegate.swift */; };
 		C0CB93A31B0ADF010079C45B /* soundapp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0CB93A11B0ADF010079C45B /* soundapp.xcdatamodeld */; };
 		C0CB93A51B0ADF010079C45B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CB93A41B0ADF010079C45B /* ViewController.swift */; };
@@ -25,11 +27,6 @@
 		C0CB93DF1B0ADF190079C45B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CB93CD1B0ADF180079C45B /* CoreGraphics.framework */; };
 		C0CB93E01B0ADF190079C45B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CB93CE1B0ADF180079C45B /* CFNetwork.framework */; };
 		C0CB93E11B0ADF190079C45B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CB93CF1B0ADF180079C45B /* AudioToolbox.framework */; };
-		C0CB93E21B0ADF190079C45B /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CB93D01B0ADF180079C45B /* ParseCrashReporting.framework */; };
-		C0CB93E31B0ADF190079C45B /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CB93D11B0ADF180079C45B /* ParseFacebookUtils.framework */; };
-		C0CB93E41B0ADF190079C45B /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CB93D21B0ADF180079C45B /* ParseFacebookUtilsV4.framework */; };
-		C0CB93E51B0ADF190079C45B /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CB93D31B0ADF180079C45B /* ParseUI.framework */; };
-		C0CB93EC1B0ADF550079C45B /* me.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C0CB93E61B0ADF550079C45B /* me.jpg */; };
 		C0CB93F61B0AE0840079C45B /* newSoundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CB93F51B0AE0840079C45B /* newSoundVC.swift */; };
 		C0CB93FB1B0AE0E30079C45B /* friendListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CB93F71B0AE0E30079C45B /* friendListVC.swift */; };
 		C0CB93FC1B0AE0E30079C45B /* loginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CB93F81B0AE0E30079C45B /* loginVC.swift */; };
@@ -38,6 +35,7 @@
 		C0CB94011B0AE0F60079C45B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CB93FF1B0AE0F60079C45B /* Bolts.framework */; };
 		C0CB94021B0AE0F60079C45B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CB94001B0AE0F60079C45B /* Parse.framework */; };
 		C0CB94041B0AE1CF0079C45B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0CB94031B0AE1CF0079C45B /* Main.storyboard */; };
+		C0DD95981B0C5FFE00CB6DFC /* me.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C0DD95971B0C5FFE00CB6DFC /* me.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C0C436221B16BE6A0045CB63 /* userCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userCell.swift; sourceTree = "<group>"; };
+		C0C436281B178E8C0045CB63 /* addFriendVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addFriendVC.swift; sourceTree = "<group>"; };
 		C0CB939A1B0ADF010079C45B /* soundapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = soundapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0CB939E1B0ADF010079C45B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0CB939F1B0ADF010079C45B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,11 +73,6 @@
 		C0CB93CD1B0ADF180079C45B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C0CB93CE1B0ADF180079C45B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		C0CB93CF1B0ADF180079C45B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		C0CB93D01B0ADF180079C45B /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = "../../Downloads/parse-library-1.7.3/ParseCrashReporting.framework"; sourceTree = "<group>"; };
-		C0CB93D11B0ADF180079C45B /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = "../../Downloads/parse-library-1.7.3/ParseFacebookUtils.framework"; sourceTree = "<group>"; };
-		C0CB93D21B0ADF180079C45B /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = "../../Downloads/parse-library-1.7.3/ParseFacebookUtilsV4.framework"; sourceTree = "<group>"; };
-		C0CB93D31B0ADF180079C45B /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../Downloads/parse-library-1.7.3/ParseUI.framework"; sourceTree = "<group>"; };
-		C0CB93E61B0ADF550079C45B /* me.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = me.jpg; path = ../../../Desktop/me.jpg; sourceTree = "<group>"; };
 		C0CB93F51B0AE0840079C45B /* newSoundVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newSoundVC.swift; sourceTree = "<group>"; };
 		C0CB93F71B0AE0E30079C45B /* friendListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = friendListVC.swift; sourceTree = "<group>"; };
 		C0CB93F81B0AE0E30079C45B /* loginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginVC.swift; sourceTree = "<group>"; };
@@ -86,6 +81,7 @@
 		C0CB93FF1B0AE0F60079C45B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = soundapp/Bolts.framework; sourceTree = "<group>"; };
 		C0CB94001B0AE0F60079C45B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = soundapp/Parse.framework; sourceTree = "<group>"; };
 		C0CB94031B0AE1CF0079C45B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		C0DD95971B0C5FFE00CB6DFC /* me.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = me.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,10 +89,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0CB93E51B0ADF190079C45B /* ParseUI.framework in Frameworks */,
 				C0CB94011B0AE0F60079C45B /* Bolts.framework in Frameworks */,
 				C0CB93DF1B0ADF190079C45B /* CoreGraphics.framework in Frameworks */,
-				C0CB93E21B0ADF190079C45B /* ParseCrashReporting.framework in Frameworks */,
 				C0CB93D51B0ADF180079C45B /* libsqlite3.dylib in Frameworks */,
 				C0CB93DE1B0ADF190079C45B /* CoreLocation.framework in Frameworks */,
 				C0CB93DA1B0ADF190079C45B /* StoreKit.framework in Frameworks */,
@@ -108,8 +102,6 @@
 				C0CB93DB1B0ADF190079C45B /* Security.framework in Frameworks */,
 				C0CB94021B0AE0F60079C45B /* Parse.framework in Frameworks */,
 				C0CB93E11B0ADF190079C45B /* AudioToolbox.framework in Frameworks */,
-				C0CB93E41B0ADF190079C45B /* ParseFacebookUtilsV4.framework in Frameworks */,
-				C0CB93E31B0ADF190079C45B /* ParseFacebookUtils.framework in Frameworks */,
 				C0CB93DC1B0ADF190079C45B /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,6 +116,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C0C4361C1B16B19D0045CB63 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				C0C436221B16BE6A0045CB63 /* userCell.swift */,
+				C0CB93F71B0AE0E30079C45B /* friendListVC.swift */,
+				C0C436281B178E8C0045CB63 /* addFriendVC.swift */,
+			);
+			name = Friends;
+			sourceTree = "<group>";
+		};
+		C0C4361D1B16B1A70045CB63 /* Login & Signup */ = {
+			isa = PBXGroup;
+			children = (
+				C0CB93F81B0AE0E30079C45B /* loginVC.swift */,
+				C0CB93FA1B0AE0E30079C45B /* signupVC.swift */,
+			);
+			name = "Login & Signup";
+			sourceTree = "<group>";
+		};
+		C0C4361E1B16B1C80045CB63 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				C0CB93F51B0AE0840079C45B /* newSoundVC.swift */,
+			);
+			name = Sound;
+			sourceTree = "<group>";
+		};
+		C0C4361F1B16B1CE0045CB63 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C0CB93F91B0AE0E30079C45B /* profileVC.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		C0CB93911B0ADF010079C45B = {
 			isa = PBXGroup;
 			children = (
@@ -141,10 +168,6 @@
 				C0CB93CD1B0ADF180079C45B /* CoreGraphics.framework */,
 				C0CB93CE1B0ADF180079C45B /* CFNetwork.framework */,
 				C0CB93CF1B0ADF180079C45B /* AudioToolbox.framework */,
-				C0CB93D01B0ADF180079C45B /* ParseCrashReporting.framework */,
-				C0CB93D11B0ADF180079C45B /* ParseFacebookUtils.framework */,
-				C0CB93D21B0ADF180079C45B /* ParseFacebookUtilsV4.framework */,
-				C0CB93D31B0ADF180079C45B /* ParseUI.framework */,
 				C0CB939C1B0ADF010079C45B /* soundapp */,
 				C0CB93B51B0ADF010079C45B /* soundappTests */,
 				C0CB939B1B0ADF010079C45B /* Products */,
@@ -163,15 +186,14 @@
 		C0CB939C1B0ADF010079C45B /* soundapp */ = {
 			isa = PBXGroup;
 			children = (
+				C0DD95971B0C5FFE00CB6DFC /* me.jpg */,
 				C0CB94031B0AE1CF0079C45B /* Main.storyboard */,
-				C0CB93E61B0ADF550079C45B /* me.jpg */,
-				C0CB93F51B0AE0840079C45B /* newSoundVC.swift */,
-				C0CB93F71B0AE0E30079C45B /* friendListVC.swift */,
-				C0CB93F81B0AE0E30079C45B /* loginVC.swift */,
-				C0CB93F91B0AE0E30079C45B /* profileVC.swift */,
-				C0CB93FA1B0AE0E30079C45B /* signupVC.swift */,
 				C0CB939F1B0ADF010079C45B /* AppDelegate.swift */,
 				C0CB93A41B0ADF010079C45B /* ViewController.swift */,
+				C0C4361F1B16B1CE0045CB63 /* Profile */,
+				C0C4361E1B16B1C80045CB63 /* Sound */,
+				C0C4361C1B16B19D0045CB63 /* Friends */,
+				C0C4361D1B16B1A70045CB63 /* Login & Signup */,
 				C0CB93A91B0ADF010079C45B /* Images.xcassets */,
 				C0CB93AB1B0ADF010079C45B /* LaunchScreen.xib */,
 				C0CB93A11B0ADF010079C45B /* soundapp.xcdatamodeld */,
@@ -285,10 +307,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0DD95981B0C5FFE00CB6DFC /* me.jpg in Resources */,
 				C0CB93AD1B0ADF010079C45B /* LaunchScreen.xib in Resources */,
 				C0CB94041B0AE1CF0079C45B /* Main.storyboard in Resources */,
 				C0CB93AA1B0ADF010079C45B /* Images.xcassets in Resources */,
-				C0CB93EC1B0ADF550079C45B /* me.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,10 +329,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0CB93A51B0ADF010079C45B /* ViewController.swift in Sources */,
+				C0C436231B16BE6A0045CB63 /* userCell.swift in Sources */,
 				C0CB93A01B0ADF010079C45B /* AppDelegate.swift in Sources */,
 				C0CB93F61B0AE0840079C45B /* newSoundVC.swift in Sources */,
 				C0CB93FB1B0AE0E30079C45B /* friendListVC.swift in Sources */,
 				C0CB93FD1B0AE0E30079C45B /* profileVC.swift in Sources */,
+				C0C436291B178E8C0045CB63 /* addFriendVC.swift in Sources */,
 				C0CB93FC1B0AE0E30079C45B /* loginVC.swift in Sources */,
 				C0CB93FE1B0AE0E30079C45B /* signupVC.swift in Sources */,
 				C0CB93A31B0ADF010079C45B /* soundapp.xcdatamodeld in Sources */,
@@ -513,6 +537,7 @@
 				C0CB93BE1B0ADF010079C45B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C0CB93BF1B0ADF010079C45B /* Build configuration list for PBXNativeTarget "soundappTests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +546,7 @@
 				C0CB93C11B0ADF010079C45B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

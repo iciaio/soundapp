@@ -72,25 +72,6 @@ class signupVC: UIViewController {
             
             user["profile_picture"] = imageFile
             
-            var friendListDict = [PFObject:String]()
-            
-            var query = PFQuery(className:"_User")
-            query.getObjectInBackgroundWithId("gnmmJS6gan") {
-                (friend: PFObject?, error: NSError?) -> Void in
-                if error == nil && friend != nil {
-                    let user : PFUser = friend as! PFUser
-                    println(user.username)
-                    friendListDict[user] = "confirmed"
-                } else {
-                    println(error)
-                }
-            }
-            user["friends"] = friendListDict
-            user.saveInBackground()
-            
-            
-            //user["sounds"]
-            //user["friends"]
             user.signUpInBackgroundWithBlock {
                 (succeeded: Bool, error: NSError?) -> Void in
                 if let error = error {
@@ -107,6 +88,16 @@ class signupVC: UIViewController {
                 } else{
                     //go to main view
                     //keep user logged in
+                    var friendTable = PFObject(className: "FriendTable")
+                    friendTable["user"] = PFUser.currentUser()
+                    friendTable["all_friends"] = NSMutableArray()
+                    
+                    var soundList: [PFObject] = []
+                    
+                    user["sounds"] = soundList
+                    user["friends"] = friendTable
+                    user.saveInBackground()
+
                     self.performSegueWithIdentifier("to_main_from_signup", sender: self)
                 }
             }
@@ -114,7 +105,14 @@ class signupVC: UIViewController {
         
         
     }
-
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        if let touch = touches.first as? UITouch {
+            self.view.endEditing(true)
+        }
+        super.touchesBegan(touches , withEvent:event)
+    }
+    
     @IBAction func gotoLogin(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }

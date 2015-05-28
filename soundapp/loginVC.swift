@@ -25,6 +25,13 @@ class loginVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        if let touch = touches.first as? UITouch {
+            self.view.endEditing(true)
+        }
+        super.touchesBegan(touches , withEvent:event)
+    }
+    
     @IBAction func loginPressed(sender: AnyObject) {
         
         var username:NSString = txtUsername.text as NSString
