@@ -184,7 +184,7 @@ class addFriendVC: UITableViewController, UISearchBarDelegate, UITableViewDataSo
                 println(incomingRequests.count)
                 println(indexPath.row)
                 mainData = incomingRequests[indexPath.row]
-                var cell2 = self.tableView.dequeueReusableCellWithIdentifier("Cell2", forIndexPath: indexPath) as! pendingUserCell
+                var cell2 = self.tableView.dequeueReusableCellWithIdentifier("Cell2", forIndexPath: indexPath) as! myRequestedUserCell
                 mainData.fetchIfNeeded()
                 if let name = mainData.username{
                     cell2.userNameLabel.text = mainData.username
