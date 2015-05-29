@@ -91,6 +91,7 @@ class signupVC: UIViewController {
                     var friendTable = PFObject(className: "FriendTable")
                     friendTable["user"] = PFUser.currentUser()
                     friendTable["all_friends"] = NSMutableArray()
+                    friendTable.saveInBackground()
                     
                     var soundList: [PFObject] = []
                     

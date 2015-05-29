@@ -33,12 +33,15 @@ class userCell: UITableViewCell {
                 //                    friends["all_friends"] = friendArray
                 
                 //deal with multiple requests: must query for requests to this user already
+                //deal with requesting self
+                
                 var newRequest = PFObject(className:"PendingTable")
-                newRequest["to"] = currentUser
-                newRequest["from"] = user
+                newRequest["to"] = user
+                newRequest["from"] = currentUser
                 newRequest.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError?) -> Void in
                     if (success) {
+                        NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
                         println("success")
                     } else {
                         println("failed!:(")

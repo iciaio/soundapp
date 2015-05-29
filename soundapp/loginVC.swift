@@ -55,7 +55,12 @@ class loginVC: UIViewController {
                     self.performSegueWithIdentifier("goto_main_from_login", sender: self)
                 } else {
                     // The login failed. Check error to see why.
-                    println("login failed. ")
+                    var alertView:UIAlertView = UIAlertView()
+                    alertView.title = "Log in Failed"
+                    alertView.message = "Incorrect username or password. Please try again."
+                    alertView.delegate = self
+                    alertView.addButtonWithTitle("OK")
+                    alertView.show()
                 }
             }
         }
