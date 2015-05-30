@@ -124,9 +124,9 @@
 			isa = PBXGroup;
 			children = (
 				C0C436221B16BE6A0045CB63 /* userCell.swift */,
+				C0CA36421B1926CF0094C498 /* requestedUserCell.swift */,
 				C0CA36461B1931B30094C498 /* myRequestedUserCell.swift */,
 				C0CB93F71B0AE0E30079C45B /* friendListVC.swift */,
-				C0CA36421B1926CF0094C498 /* requestedUserCell.swift */,
 				C0C436281B178E8C0045CB63 /* addFriendVC.swift */,
 			);
 			name = Friends;

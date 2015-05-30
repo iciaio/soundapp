@@ -12,9 +12,12 @@ import Parse
 class userCell: UITableViewCell {
 
     @IBOutlet weak var userNameLabel: UILabel!
-
-    @IBAction func addFriend(sender: AnyObject) {
+    @IBOutlet weak var requestButtonOutlet: UIButton!
+    
+    @IBAction func requestFriend(sender: AnyObject) {
         let currentUser = PFUser.currentUser()
+        
+        self.requestButtonOutlet.enabled = false
         
         var query = PFUser.query()
         query!.whereKey("username", equalTo: userNameLabel.text!)
@@ -26,14 +29,6 @@ class userCell: UITableViewCell {
                 // The find succeeded.
                 println("Successfully retrieved the object.")
                 println((user as! PFUser).username)
-                
-                //                    var friends : PFObject = currentUser?["friends"] as! PFObject
-                //                    var friendArray : [PFUser] = friends["all_friends"] as! [PFUser]
-                //                    friendArray.append(user as! PFUser)
-                //                    friends["all_friends"] = friendArray
-                
-                //deal with multiple requests: must query for requests to this user already
-                //deal with requesting self
                 
                 var newRequest = PFObject(className:"PendingTable")
                 newRequest["to"] = user
@@ -50,4 +45,5 @@ class userCell: UITableViewCell {
             }
         }
     }
+
 }

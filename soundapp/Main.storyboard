@@ -210,7 +210,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell1" id="OVg-gm-MlX" customClass="userCell" customModule="soundapp" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell1" id="OVg-gm-MlX" customClass="userCell" customModule="soundapp" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OVg-gm-MlX" id="2qK-J2-8vM">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -221,22 +221,23 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JE2-bb-XRF">
-                                            <rect key="frame" x="254" y="10" width="57" height="30"/>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqP-Jy-qxt">
+                                            <rect key="frame" x="255" y="10" width="57" height="30"/>
                                             <state key="normal" title="Request">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="addFriend:" destination="OVg-gm-MlX" eventType="touchUpInside" id="Mb5-mn-Bt9"/>
+                                                <action selector="requestFriend:" destination="OVg-gm-MlX" eventType="touchUpInside" id="AZ5-xs-BrR"/>
                                             </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="requestButtonOutlet" destination="wqP-Jy-qxt" id="9Lo-3U-tKm"/>
                                     <outlet property="userNameLabel" destination="RkR-Wa-3Y6" id="u8v-Lq-9TB"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell2" id="nL2-f1-t0K" customClass="myRequestedUserCell" customModule="soundapp" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell2" id="nL2-f1-t0K" customClass="myRequestedUserCell" customModule="soundapp" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nL2-f1-t0K" id="s8c-bX-mv6">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -259,7 +260,7 @@
                                     <outlet property="userNameLabel" destination="5fr-6q-hgU" id="wL7-x5-gay"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell3" id="fVA-81-1XG" customClass="requestedUserCell" customModule="soundapp" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell3" id="fVA-81-1XG" customClass="requestedUserCell" customModule="soundapp" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fVA-81-1XG" id="Ti8-zu-ib6">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -288,9 +289,7 @@
                             <outlet property="delegate" destination="TU3-D0-ubA" id="FbP-ap-hRK"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="J61-dW-wrr"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Requested and Pending" id="hdr-iu-NOp"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

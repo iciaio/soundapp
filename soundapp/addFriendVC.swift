@@ -58,12 +58,6 @@ class addFriendVC: UITableViewController, UISearchBarDelegate, UITableViewDataSo
         }
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        if let touch = touches.first as? UITouch {
-            self.view.endEditing(true)
-        }
-        super.touchesBegan(touches , withEvent:event)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -157,26 +151,20 @@ class addFriendVC: UITableViewController, UISearchBarDelegate, UITableViewDataSo
         // Dispose of any resources that can be recreated.
     }
     
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if search == true {
-//            return dataSecond.count
-//        }
-//        else{
-//            println(incomingRequests.count)
-//            return incomingRequests.count
-//        }
-//    }
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if search == true{
             if dataSecond != [] {
                 mainData = (dataSecond[indexPath.row])
             }
             var cell = self.tableView.dequeueReusableCellWithIdentifier("Cell1", forIndexPath: indexPath) as! userCell
-            mainData.fetchIfNeeded()
-            if let name = mainData.username{
-                cell.userNameLabel.text = mainData.username
-            }
+            mainData.fetchIfNeededInBackgroundWithBlock({
+                (object, error) -> Void in
+                if (error == nil){
+                    if let name = self.mainData.username{
+                        cell.userNameLabel.text = self.mainData.username
+                    }
+                }
+            })
             return cell
         }
         else{
@@ -185,20 +173,28 @@ class addFriendVC: UITableViewController, UISearchBarDelegate, UITableViewDataSo
                 println(indexPath.row)
                 mainData = incomingRequests[indexPath.row]
                 var cell2 = self.tableView.dequeueReusableCellWithIdentifier("Cell2", forIndexPath: indexPath) as! myRequestedUserCell
-                mainData.fetchIfNeeded()
-                if let name = mainData.username{
-                    cell2.userNameLabel.text = mainData.username
-                }
+                mainData.fetchIfNeededInBackgroundWithBlock({
+                    (object, error) -> Void in
+                    if (error == nil){
+                        if let name = self.mainData.username{
+                            cell2.userNameLabel.text = self.mainData.username
+                        }
+                    }
+                })
                 return cell2
             } else {
                 println(incomingRequests.count)
                 println(indexPath.row)
                 mainData = outgoingRequests[indexPath.row]
                 var cell3 = self.tableView.dequeueReusableCellWithIdentifier("Cell3", forIndexPath: indexPath) as! requestedUserCell
-                mainData.fetchIfNeeded()
-                if let name = mainData.username{
-                    cell3.userNameLabel.text = mainData.username
-                }
+                mainData.fetchIfNeededInBackgroundWithBlock({
+                    (object, error) -> Void in
+                    if (error == nil){
+                        if let name = self.mainData.username{
+                            cell3.userNameLabel.text = self.mainData.username
+                        }
+                    }
+                })
                 return cell3
             }
         }
@@ -231,21 +227,25 @@ class addFriendVC: UITableViewController, UISearchBarDelegate, UITableViewDataSo
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if (section == 0){
-            if self.incomingRequests.count == 0 {
-                return nil
-            }else {
-                return "Requests to me"
+        if (search == true) {
+            return nil
+        } else {
+            if (section == 0){
+                if self.incomingRequests.count == 0 {
+                    return nil
+                }else {
+                    return "Requests to me"
+                }
+            }
+            else {
+                if self.outgoingRequests.count == 0 {
+                    return nil
+                }else {
+                    return "Requests from me"
+                }
             }
         }
-        else {
-            if self.outgoingRequests.count == 0 {
-                return nil
-            }else {
-                return "Requests from me"
-            }
-        }
+        
     }
-    
 
 }
