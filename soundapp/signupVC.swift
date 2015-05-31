@@ -91,15 +91,23 @@ class signupVC: UIViewController {
                     var friendTable = PFObject(className: "FriendTable")
                     friendTable["user"] = PFUser.currentUser()
                     friendTable["all_friends"] = NSMutableArray()
-                    friendTable.saveInBackground()
-                    
-                    var soundList: [PFObject] = []
-                    
-                    user["sounds"] = soundList
-                    user["friends"] = friendTable
-                    user.saveInBackground()
+                    friendTable.saveInBackgroundWithBlock {
+                        (success: Bool, error: NSError?) -> Void in
+                        if (success) {
+                            
+                            var soundList: [PFObject] = []
+                            
+                            user["sounds"] = soundList
+                            user["friends"] = friendTable
+                            user.saveInBackground()
+                            
+                            self.performSegueWithIdentifier("to_main_from_signup", sender: self)
 
-                    self.performSegueWithIdentifier("to_main_from_signup", sender: self)
+                        } else {
+                            println("signup failed!")
+                        }
+                    }
+                    
                 }
             }
         }

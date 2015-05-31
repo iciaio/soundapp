@@ -14,10 +14,12 @@ class friendListVC: UITableViewController {
     var currentUser = PFUser.currentUser()
     var friendArray = [PFUser]()
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        var friends = currentUser?["friends"] as! PFObject
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadList:",name:"load", object: nil)
+
+        var friends = self.currentUser?["friends"] as! PFObject
         friends.fetchIfNeededInBackgroundWithBlock({
             (object, error) -> Void in
             if (error == nil){
@@ -32,7 +34,12 @@ class friendListVC: UITableViewController {
         
         // Do any additional setup after loading the view.
     }
-
+    
+    func loadList(notification: NSNotification){
+        //load data here
+        self.tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -45,7 +52,13 @@ class friendListVC: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         
-        cell.textLabel?.text = friendArray[indexPath.row].username
+        friendArray[indexPath.row].fetchIfNeededInBackgroundWithBlock({
+            (object, error) -> Void in
+            if (error == nil){
+                cell.textLabel?.text = self.friendArray[indexPath.row].username
+            }
+        })
+
         //println(friendArray[indexPath.row].username)
         return cell
     }

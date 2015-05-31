@@ -62,14 +62,23 @@ class myRequestedUserCell: UITableViewCell {
         
         var currentUserFriends : PFObject = self.currentUser!["friends"] as! PFObject
         currentUserFriends.addObject(self.friend, forKey: "all_friends")
-        currentUserFriends.save()
         
-        var friendFriends : PFObject = self.friend["friends"] as! PFObject
-        friendFriends.addObject(self.currentUser!, forKey: "all_friends")
-        friendFriends.save()
-        
-        NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
-        
+        currentUserFriends.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                
+                var friendFriends : PFObject = self.friend["friends"] as! PFObject
+                friendFriends.addObject(self.currentUser!, forKey: "all_friends")
+                
+                friendFriends.saveInBackgroundWithBlock {
+                    (success: Bool, error: NSError?) -> Void in
+                    if (success) {
+                        
+                        NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
+                    }
+                }
+            }
+        }
     }
     
 }
