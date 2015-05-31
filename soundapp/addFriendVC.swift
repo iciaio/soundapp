@@ -71,7 +71,6 @@ class addFriendVC: UITableViewController, UISearchBarDelegate, UITableViewDataSo
     func loadList(notification: NSNotification){
         //load data here
         populatedPending()
-        self.tableView.reloadData()
     }
     
     
@@ -90,7 +89,6 @@ class addFriendVC: UITableViewController, UISearchBarDelegate, UITableViewDataSo
                     self.incomingRequests.append(request["from"] as! PFUser)
                 }
                 self.populateRequested()
-                self.tableView.reloadData()
             } else {
                 // Log details of the failure
                 println("Error: \(error!) \(error!.userInfo!)")
@@ -113,7 +111,6 @@ class addFriendVC: UITableViewController, UISearchBarDelegate, UITableViewDataSo
                     self.outgoingRequests.append(request["to"] as! PFUser)
                 }
                 self.populateUnrelatedUsers()
-                self.tableView.reloadData()
             } else {
                 // Log details of the failure
                 println("Error: \(error!) \(error!.userInfo!)")

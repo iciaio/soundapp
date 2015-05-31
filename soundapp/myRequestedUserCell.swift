@@ -10,17 +10,19 @@ import UIKit
 import Parse
 
 class myRequestedUserCell: UITableViewCell {
-
+    
     let currentUser = PFUser.currentUser()
     var friend = PFUser()
+    
     
     @IBOutlet weak var userNameLabel: UILabel!
     
     @IBAction func acceptRequest(sender: AnyObject) {
         
         println("accepting request you stupid butthead")
+        println(self.userNameLabel.text!)
         var query = PFUser.query()
-        query!.whereKey("username", equalTo: userNameLabel.text!)
+        query!.whereKey("username", equalTo: self.userNameLabel.text!)
         query!.getFirstObjectInBackgroundWithBlock{
             (user: AnyObject?, error: NSError?) -> Void in
             if !(error != nil) {
@@ -46,9 +48,8 @@ class myRequestedUserCell: UITableViewCell {
             if error == nil {
                 for request in requests! {
                     request.deleteInBackground()
-                    self.addToEachFriendsTable()
-                    NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
                 }
+                self.addToEachFriendsTable()
             } else {
                 println("Error: \(error!) \(error!.userInfo!)")
             }
@@ -57,10 +58,18 @@ class myRequestedUserCell: UITableViewCell {
     }
     
     func addToEachFriendsTable(){
+                
         
-        println("adding to friends table here")
+        var currentUserFriends : PFObject = self.currentUser!["friends"] as! PFObject
+        currentUserFriends.addObject(self.friend, forKey: "all_friends")
+        currentUserFriends.save()
         
+        var friendFriends : PFObject = self.friend["friends"] as! PFObject
+        friendFriends.addObject(self.currentUser!, forKey: "all_friends")
+        friendFriends.save()
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
         
     }
-
+    
 }

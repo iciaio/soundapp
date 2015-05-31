@@ -18,18 +18,8 @@ class friendListVC: UITableViewController {
         super.viewDidLoad()
         
         var friends = currentUser?["friends"] as! PFObject
-        //friendArray = friends["all_friends"] as! [PFUser]
-        
-        
-        //TEST CODE FOR FRIENDS LIST//
-        var query = PFUser.query()
-        var friend1 = query!.getObjectWithId("0RQxiwlpqW") as! PFUser
-        var friend2 = query!.getObjectWithId("P9kujwIwKZ") as! PFUser
-        var friend3 = query!.getObjectWithId("5FseKgVDu6") as! PFUser
-
-        friendArray.append(friend1)
-        friendArray.append(friend2)
-        friendArray.append(friend3)
+        self.friendArray = friends["all_friends"]! as! [PFUser]
+        println(self.friendArray.count)
         
         self.tableView.reloadData()
         
