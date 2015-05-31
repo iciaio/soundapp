@@ -136,15 +136,6 @@
                                     <action selector="editProfilePicture:" destination="khH-PW-dol" eventType="touchUpInside" id="ZPl-yP-sgf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZkN-G5-Iuj">
-                                <rect key="frame" x="167" y="233" width="78" height="30"/>
-                                <state key="normal" title="add friends">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="TU3-D0-ubA" kind="push" id="09V-An-QJf"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -189,12 +180,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Friend List" id="zlw-BH-G9x">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ldf-Re-9Ye"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ldf-Re-9Ye">
+                            <connections>
+                                <segue destination="TU3-D0-ubA" kind="push" id="aFn-Xc-otx"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l4e-DG-25Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1763" y="346"/>
+            <point key="canvasLocation" x="1835" y="726"/>
         </scene>
         <!--Requested and Pending-->
         <scene sceneID="Mux-Kr-8P3">
@@ -221,19 +216,18 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqP-Jy-qxt">
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVK-jX-0h7">
                                             <rect key="frame" x="255" y="10" width="57" height="30"/>
                                             <state key="normal" title="Request">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="requestFriend:" destination="OVg-gm-MlX" eventType="touchUpInside" id="AZ5-xs-BrR"/>
+                                                <action selector="requestFriend:" destination="OVg-gm-MlX" eventType="touchUpInside" id="2lF-3j-EET"/>
                                             </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="requestButtonOutlet" destination="wqP-Jy-qxt" id="9Lo-3U-tKm"/>
                                     <outlet property="userNameLabel" destination="RkR-Wa-3Y6" id="u8v-Lq-9TB"/>
                                 </connections>
                             </tableViewCell>
@@ -268,22 +262,22 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fVA-81-1XG" id="Ti8-zu-ib6">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETX-0Y-pjE">
-                                            <rect key="frame" x="25" y="14" width="179" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35a-Ge-j9O">
                                             <rect key="frame" x="256" y="10" width="56" height="30"/>
                                             <state key="normal" title="Rescind">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzZ-6h-5Or">
+                                            <rect key="frame" x="26" y="14" width="175" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="userNameLabel" destination="ETX-0Y-pjE" id="x9D-pn-fsw"/>
+                                    <outlet property="userNameLabel" destination="pzZ-6h-5Or" id="be6-vd-v6r"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -301,7 +295,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cNW-Ht-hbx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1763" y="984"/>
+            <point key="canvasLocation" x="2391" y="628"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yZe-Em-24k">

@@ -18,10 +18,15 @@ class friendListVC: UITableViewController {
         super.viewDidLoad()
         
         var friends = currentUser?["friends"] as! PFObject
-        self.friendArray = friends["all_friends"]! as! [PFUser]
-        println(self.friendArray.count)
-        
-        self.tableView.reloadData()
+        friends.fetchIfNeededInBackgroundWithBlock({
+            (object, error) -> Void in
+            if (error == nil){
+                self.friendArray = friends["all_friends"]! as! [PFUser]
+                println(self.friendArray.count)
+                
+                self.tableView.reloadData()
+            }
+        })
         
         //TEST CODE END//
         

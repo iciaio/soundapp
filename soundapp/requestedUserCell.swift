@@ -9,8 +9,9 @@
 import UIKit
 
 class requestedUserCell: UITableViewCell {
+
     @IBOutlet weak var userNameLabel: UILabel!
-/*
+    /*
     
     @IBAction func acceptRequest(sender: AnyObject) {
     

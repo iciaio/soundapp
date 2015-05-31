@@ -11,35 +11,24 @@ import Parse
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
+class ViewController: UIViewController, MKMapViewDelegate   {
     
     @IBOutlet weak var mapView: MKMapView!
+    var locationManager: CLLocationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManager = CLLocationManager()
+        locationManager.requestAlwaysAuthorization()
+        mapView.showsUserLocation = true
+        mapView.delegate = self
+        //mapView.setRegion(<#region: MKCoordinateRegion#>, animated: <#Bool#>)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        
-        //if user is not logged in: self.performSegueWithIdentifier("goto_login", sender: self)
-        //if user is logged in: nothing
-        var currentUser = PFUser.currentUser()
-        if currentUser != nil {
-            let location = CLLocationCoordinate2D(latitude: 51.50007773,longitude: -0.1246402)
-            let span = MKCoordinateSpanMake(0.05, 0.05)
-            let region = MKCoordinateRegion(center: location, span: span)
-            mapView.setRegion(region, animated: true)
-            
-        } else {
-            self.performSegueWithIdentifier("goto_login", sender: self)
-        }
-    }
-    
     
 }
 

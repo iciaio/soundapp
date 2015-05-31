@@ -12,13 +12,10 @@ import Parse
 class userCell: UITableViewCell {
 
     @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var requestButtonOutlet: UIButton!
     
     @IBAction func requestFriend(sender: AnyObject) {
         let currentUser = PFUser.currentUser()
-        
-        self.requestButtonOutlet.enabled = false
-        
+                
         var query = PFUser.query()
         query!.whereKey("username", equalTo: userNameLabel.text!)
         query!.getFirstObjectInBackgroundWithBlock{
