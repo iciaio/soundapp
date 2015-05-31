@@ -253,6 +253,9 @@
                                             <state key="normal" title="Accept">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="acceptRequest:" destination="nL2-f1-t0K" eventType="touchUpInside" id="NZp-RV-Gzr"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
