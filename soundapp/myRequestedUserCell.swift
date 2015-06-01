@@ -19,7 +19,6 @@ class myRequestedUserCell: UITableViewCell {
     
     @IBAction func acceptRequest(sender: AnyObject) {
         
-        println("accepting request you stupid butthead")
         println(self.userNameLabel.text!)
         var query = PFUser.query()
         query!.whereKey("username", equalTo: self.userNameLabel.text!)

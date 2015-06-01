@@ -7,51 +7,47 @@
 //
 
 import UIKit
+import Parse
 
 class requestedUserCell: UITableViewCell {
 
     @IBOutlet weak var userNameLabel: UILabel!
-    /*
+    var friend = PFUser()
     
-    @IBAction func acceptRequest(sender: AnyObject) {
-    
-    println("accepting request you stupid butthead")
-    var query = PFUser.query()
-    query!.whereKey("username", equalTo: userNameLabel.text!)
-    query!.getFirstObjectInBackgroundWithBlock{
-    (user: AnyObject?, error: NSError?) -> Void in
-    if !(error != nil) {
-    println("hereeee")
-    self.friend = user as! PFUser!
-    self.queryPending()
-    }
-    else{
-    println(error)
-    }
-    }
-    
+    @IBAction func recindRequest(sender: AnyObject)
+    {
+        println(self.userNameLabel.text!)
+        var query = PFUser.query()
+        query!.whereKey("username", equalTo: self.userNameLabel.text!)
+        query!.getFirstObjectInBackgroundWithBlock{
+            (user: AnyObject?, error: NSError?) -> Void in
+            if !(error != nil) {
+                self.friend = user as! PFUser!
+                self.queryPending()
+            }
+            else{
+                println(error)
+            }
+        }
     }
     
     func queryPending(){
-    
-    var pendingQuery = PFQuery(className:"PendingTable")
-    pendingQuery.whereKey("to", equalTo: PFUser.currentUser()!)
-    pendingQuery.whereKey("from", equalTo: self.friend)
-    pendingQuery.findObjectsInBackgroundWithBlock {
-    (requests: [AnyObject]?, error: NSError?) -> Void in
-    
-    if error == nil {
-    for request in requests! {
-    request.deleteInBackground()
-    self.addToEachFriendsTable()
-    NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
+        
+        var pendingQuery = PFQuery(className:"PendingTable")
+        pendingQuery.whereKey("from", equalTo: PFUser.currentUser()!)
+        pendingQuery.whereKey("to", equalTo: self.friend)
+        pendingQuery.findObjectsInBackgroundWithBlock {
+            (requests: [AnyObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                println("rescinding")
+                for request in requests! {
+                    request.deleteInBackground()
+                }
+                NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
+            } else {
+                println("Error: \(error!) \(error!.userInfo!)")
+            }
+        }
     }
-    } else {
-    println("Error: \(error!) \(error!.userInfo!)")
-    }
-    }
-    
-    }
-    
-    */
 }
