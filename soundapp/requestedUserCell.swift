@@ -26,6 +26,7 @@ class requestedUserCell: UITableViewCell {
                 self.queryPending()
             }
             else{
+                println("error finding friend to recind request")
                 println(error)
             }
         }
@@ -44,9 +45,11 @@ class requestedUserCell: UITableViewCell {
                 for request in requests! {
                     request.deleteInBackground()
                 }
-                NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
+                //rescinding a request should remove the request from pending table and refresh the addFriendVC
+                NSNotificationCenter.defaultCenter().postNotificationName("reloadAddFriendVC", object: nil)
             } else {
                 println("Error: \(error!) \(error!.userInfo!)")
+                println("error querying pendingTable to delete request")
             }
         }
     }

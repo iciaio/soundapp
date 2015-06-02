@@ -21,7 +21,7 @@ class userCell: UITableViewCell {
         query!.getFirstObjectInBackgroundWithBlock{
             (user: PFObject?, error: NSError?) -> Void in
             if error != nil || user == nil {
-                println("The getFirstObject request failed.")
+                println("request user failed on getting friend to request")
             } else {
                 // The find succeeded.
                 println("Successfully retrieved the object.")
@@ -33,10 +33,11 @@ class userCell: UITableViewCell {
                 newRequest.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError?) -> Void in
                     if (success) {
-                        NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
-                        println("success")
+                        //this should remove from pending table and refresh the addFriendVC
+                        NSNotificationCenter.defaultCenter().postNotificationName("reloadAddFriendVC", object: nil)
+                        println("successfully requested a friend")
                     } else {
-                        println("failed!:(")
+                        println("request user failed on saving in pending table")
                     }
                 }
             }

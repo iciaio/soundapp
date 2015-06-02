@@ -37,6 +37,7 @@ class addFriendVC: UITableViewController, UISearchBarDelegate, UITableViewDataSo
     
     var incomingRequests = [PFUser]()
     var outgoingRequests = [PFUser]()
+    var alreadyFriends = [PFUser]()
     let currentUser = PFUser.currentUser()
     
     
@@ -61,7 +62,7 @@ class addFriendVC: UITableViewController, UISearchBarDelegate, UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadList:",name:"load", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadList:",name:"reloadAddFriendVC", object: nil)
         searchTextField.delegate = self
 
         populatedPending()
@@ -110,13 +111,25 @@ class addFriendVC: UITableViewController, UISearchBarDelegate, UITableViewDataSo
                 for request in objects!{
                     self.outgoingRequests.append(request["to"] as! PFUser)
                 }
-                self.populateUnrelatedUsers()
+                self.populateAlreadyFriends()
             } else {
                 // Log details of the failure
                 println("Error: \(error!) \(error!.userInfo!)")
             }
         }
-        
+    }
+    
+    func populateAlreadyFriends(){
+        var friends = self.currentUser?["friends"] as! PFObject
+        friends.fetchIfNeededInBackgroundWithBlock({
+            (object, error) -> Void in
+            if (error == nil){
+                self.alreadyFriends = friends["all_friends"]! as! [PFUser]
+                self.populateUnrelatedUsers()
+            } else {
+                println("error getting people already friends for search view")
+            }
+        })
     }
     
     func populateUnrelatedUsers() { //These users will show up in search
@@ -129,7 +142,8 @@ class addFriendVC: UITableViewController, UISearchBarDelegate, UITableViewDataSo
                 for user in users!{
                     if (user.username != self.currentUser?.username) &&
                         (!contains (self.incomingRequests, user as! PFUser)) &&
-                        (!contains (self.outgoingRequests, user as! PFUser)){
+                        (!contains (self.outgoingRequests, user as! PFUser)) &&
+                        (!contains (self.alreadyFriends, user as! PFUser)){
                         self.allUsers.append(user as! PFUser)
                     }
                 }

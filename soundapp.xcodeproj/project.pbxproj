@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0C33A9C1B1D2962008A4A2B /* friendListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C33A9B1B1D2962008A4A2B /* friendListCell.swift */; };
 		C0C436231B16BE6A0045CB63 /* userCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C436221B16BE6A0045CB63 /* userCell.swift */; };
 		C0C436291B178E8C0045CB63 /* addFriendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C436281B178E8C0045CB63 /* addFriendVC.swift */; };
 		C0C863EF1B1AC04C007BDE5E /* myRequestedUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C863EE1B1AC04C007BDE5E /* myRequestedUserCell.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C0C33A9B1B1D2962008A4A2B /* friendListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = friendListCell.swift; sourceTree = "<group>"; };
 		C0C436221B16BE6A0045CB63 /* userCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userCell.swift; sourceTree = "<group>"; };
 		C0C436281B178E8C0045CB63 /* addFriendVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addFriendVC.swift; sourceTree = "<group>"; };
 		C0C863EE1B1AC04C007BDE5E /* myRequestedUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myRequestedUserCell.swift; sourceTree = "<group>"; };
@@ -125,8 +127,9 @@
 			children = (
 				C0C436221B16BE6A0045CB63 /* userCell.swift */,
 				C0CA36421B1926CF0094C498 /* requestedUserCell.swift */,
-				C0CB93F71B0AE0E30079C45B /* friendListVC.swift */,
 				C0C863EE1B1AC04C007BDE5E /* myRequestedUserCell.swift */,
+				C0C33A9B1B1D2962008A4A2B /* friendListCell.swift */,
+				C0CB93F71B0AE0E30079C45B /* friendListVC.swift */,
 				C0C436281B178E8C0045CB63 /* addFriendVC.swift */,
 			);
 			name = Friends;
@@ -338,6 +341,7 @@
 				C0C436231B16BE6A0045CB63 /* userCell.swift in Sources */,
 				C0CB93A01B0ADF010079C45B /* AppDelegate.swift in Sources */,
 				C0C863EF1B1AC04C007BDE5E /* myRequestedUserCell.swift in Sources */,
+				C0C33A9C1B1D2962008A4A2B /* friendListCell.swift in Sources */,
 				C0CB93F61B0AE0840079C45B /* newSoundVC.swift in Sources */,
 				C0CB93FB1B0AE0E30079C45B /* friendListVC.swift in Sources */,
 				C0CB93FD1B0AE0E30079C45B /* profileVC.swift in Sources */,

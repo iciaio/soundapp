@@ -19,17 +19,16 @@ class myRequestedUserCell: UITableViewCell {
     
     @IBAction func acceptRequest(sender: AnyObject) {
         
-        println(self.userNameLabel.text!)
         var query = PFUser.query()
         query!.whereKey("username", equalTo: self.userNameLabel.text!)
         query!.getFirstObjectInBackgroundWithBlock{
             (user: AnyObject?, error: NSError?) -> Void in
             if !(error != nil) {
-                println("hereeee")
                 self.friend = user as! PFUser!
                 self.queryPending()
             }
             else{
+                println("error querying for user to accept request")
                 println(error)
             }
         }
@@ -50,6 +49,7 @@ class myRequestedUserCell: UITableViewCell {
                 }
                 self.addToEachFriendsTable()
             } else {
+                println("error querying pendingTable to remove pending request")
                 println("Error: \(error!) \(error!.userInfo!)")
             }
         }
@@ -72,10 +72,15 @@ class myRequestedUserCell: UITableViewCell {
                 friendFriends.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError?) -> Void in
                     if (success) {
-                        
-                        NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
+                        //should reload addFriendsVC and also friendListVC
+                        NSNotificationCenter.defaultCenter().postNotificationName("reloadAddFriendVC", object: nil)
+                        NSNotificationCenter.defaultCenter().postNotificationName("reloadFriendListVC", object: nil)                        
+                    } else {
+                        println("error adding friend to eachothers friend table")
                     }
                 }
+            } else {
+                println("error adding friend to eachothers friend table")
             }
         }
     }

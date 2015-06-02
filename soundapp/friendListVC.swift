@@ -17,8 +17,11 @@ class friendListVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadList:",name:"load", object: nil)
-
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadList:",name:"reloadFriendListVC", object: nil)
+        self.setFriends()
+    }
+    
+    func setFriends(){
         var friends = self.currentUser?["friends"] as! PFObject
         friends.fetchIfNeededInBackgroundWithBlock({
             (object, error) -> Void in
@@ -29,15 +32,11 @@ class friendListVC: UITableViewController {
                 self.tableView.reloadData()
             }
         })
-        
-        //TEST CODE END//
-        
-        // Do any additional setup after loading the view.
     }
     
     func loadList(notification: NSNotification){
         //load data here
-        self.tableView.reloadData()
+        self.setFriends()
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,12 +49,12 @@ class friendListVC: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! friendListCell
         
         friendArray[indexPath.row].fetchIfNeededInBackgroundWithBlock({
             (object, error) -> Void in
             if (error == nil){
-                cell.textLabel?.text = self.friendArray[indexPath.row].username
+                cell.userNameLabel.text = self.friendArray[indexPath.row].username
             }
         })
 
