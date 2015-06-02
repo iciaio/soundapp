@@ -80,6 +80,15 @@
                                     <action selector="playAudio:" destination="jtk-Bf-eDn" eventType="touchUpInside" id="RCx-fb-74w"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1d-PT-m0H">
+                                <rect key="frame" x="216" y="269" width="49" height="30"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitAudio:" destination="jtk-Bf-eDn" eventType="touchUpInside" id="byY-D7-c4D"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nns-2p-FpA">
                                 <rect key="frame" x="91" y="191" width="33" height="30"/>
                                 <state key="normal" title="Stop">
@@ -89,6 +98,11 @@
                                     <action selector="stopAudio:" destination="jtk-Bf-eDn" eventType="touchUpInside" id="6FQ-ZM-cl4"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vYH-QJ-nlQ">
+                                <rect key="frame" x="58" y="106" width="207" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -97,6 +111,8 @@
                         <outlet property="playButton" destination="LQp-7T-3n0" id="gUn-qo-zca"/>
                         <outlet property="recordButton" destination="PO7-Uo-p3f" id="oWm-cb-hCo"/>
                         <outlet property="stopButton" destination="Nns-2p-FpA" id="a0h-ik-ScC"/>
+                        <outlet property="submitButton" destination="E1d-PT-m0H" id="h1g-Rb-eD1"/>
+                        <outlet property="titleTextField" destination="vYH-QJ-nlQ" id="Iun-Fx-Cb2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oxg-K1-41b" userLabel="First Responder" sceneMemberID="firstResponder"/>

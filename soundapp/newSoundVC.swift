@@ -15,19 +15,23 @@ class newSoundVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelega
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var titleTextField: UITextField!
+    
     var audioPlayer: AVAudioPlayer?
     var audioRecorder: AVAudioRecorder?
+    var soundFileURL = NSURL()
+    var soundFilePath = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         playButton.enabled = false
         stopButton.enabled = false
         
-        let dirPaths =
-        NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let docsDir = dirPaths[0] as! String
-        let soundFilePath = docsDir.stringByAppendingPathComponent("sound.caf")
-        let soundFileURL = NSURL(fileURLWithPath: soundFilePath)
+        self.soundFilePath = docsDir.stringByAppendingPathComponent("sound.caf")
+        self.soundFileURL = NSURL(fileURLWithPath: soundFilePath)!
         let recordSettings =
         [AVEncoderAudioQualityKey: AVAudioQuality.Min.rawValue,
             AVEncoderBitRateKey: 16,
@@ -98,6 +102,29 @@ class newSoundVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelega
             }
         }
     }
+    
+    @IBAction func submitAudio(sender: AnyObject) {
+        if audioRecorder?.recording == false {
+
+            var error: NSError?
+            
+            let fileData = NSData(contentsOfFile: self.soundFilePath)
+            let parseFile = PFFile(name: "sound.caf", data: fileData!)
+            var newSound = PFObject(className: "Sounds")
+            newSound["file"] = parseFile
+            newSound["title"] = self.titleTextField.text
+            newSound.saveInBackgroundWithBlock {
+                (success: Bool, error: NSError?) -> Void in
+                if (success) {
+                    println("submit pressed")
+
+                } else {
+                    println("error saving sound")
+                }
+            }
+        }
+    }
+    
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
         recordButton.enabled = true
