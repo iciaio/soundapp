@@ -14,13 +14,13 @@ import AVFoundation
 
 class ViewController: UIViewController, MKMapViewDelegate   {
     
-
     @IBOutlet weak var mapView: MKMapView!
     var locationManager: CLLocationManager!
     var currentLocation = CLLocationCoordinate2D()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         locationManager.requestAlwaysAuthorization()

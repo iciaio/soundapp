@@ -47,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="757" y="273"/>
+            <point key="canvasLocation" x="761" y="273"/>
         </scene>
         <!--Add Sound-->
         <scene sceneID="WsM-cl-me5">
@@ -488,8 +488,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="DNa-9M-t5Y"/>
         <segue reference="9vi-et-TO4"/>
         <segue reference="skG-5F-pzo"/>
-        <segue reference="DNa-9M-t5Y"/>
     </inferredMetricsTieBreakers>
 </document>
