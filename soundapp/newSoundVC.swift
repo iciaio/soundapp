@@ -149,7 +149,10 @@ class newSoundVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelega
                     (success: Bool, error: NSError?) -> Void in
                     if (success) {
                         println("submit pressed")
-                        
+                        self.player = nil
+                        self.recorder = nil
+                        self.playPauseButton.enabled = false
+                        self.submitButton.enabled = false
                     } else {
                         println("error saving sound")
                     }

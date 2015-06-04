@@ -14,22 +14,26 @@ import AVFoundation
 
 class ViewController: UIViewController, MKMapViewDelegate   {
     
-    var players: [AVAudioPlayer!] = []
+
     @IBOutlet weak var mapView: MKMapView!
     var locationManager: CLLocationManager!
+    var currentLocation = CLLocationCoordinate2D()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager = CLLocationManager()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         locationManager.requestAlwaysAuthorization()
+        locationManager.distanceFilter = 1.0;
         mapView.showsUserLocation = true
         mapView.delegate = self
         var locValue:CLLocationCoordinate2D = locationManager.location.coordinate
         mapView.setRegion(MKCoordinateRegionMakeWithDistance(locValue, 400, 400), animated: true)
-        populateMap()
+        populateMapWithAnnotations()
+        getClosestSound()
     }
     
-    func populateMap() {
+    func populateMapWithAnnotations() {
         PFGeoPoint.geoPointForCurrentLocationInBackground {
             (userGeoPoint: PFGeoPoint?, error: NSError?) -> Void in
             if error == nil {
@@ -52,19 +56,6 @@ class ViewController: UIViewController, MKMapViewDelegate   {
                                 coordinate: CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude))
                             self.mapView.addAnnotation(soundAnnotation)
                             
-                            //Store sounds in array.
-                            let audioFile: PFFile = sound["file"] as! PFFile
-                            audioFile.getDataInBackgroundWithBlock({
-                                (soundData: NSData?, error: NSError?) -> Void in
-                                if (error == nil) {
-                                    println("here!")
-                                    var error: NSError?
-
-                                    self.players.append(AVAudioPlayer(data: soundData, error: &error))
-                                } else {
-                                    println("error")
-                                }
-                            })
                         }
                     } else {
                         // Log details of the failure
@@ -75,9 +66,63 @@ class ViewController: UIViewController, MKMapViewDelegate   {
         }
     }
     
+    func getClosestSound() {
+        PFGeoPoint.geoPointForCurrentLocationInBackground {
+            (userGeoPoint: PFGeoPoint?, error: NSError?) -> Void in
+            if error == nil {
+                var soundQuery = PFQuery(className:"Sounds")
+                soundQuery.whereKey("location", nearGeoPoint:userGeoPoint!)
+                soundQuery.limit = 1
+                soundQuery.getFirstObjectInBackgroundWithBlock {
+                    (sound: PFObject?, error: NSError?) -> Void in
+                    if error != nil || sound == nil {
+                        println("The getClosestSound request failed.")
+                    } else {
+                        // The find succeeded.
+                        let audioFile: PFFile = sound!["file"] as! PFFile
+                        let loc = sound!["location"] as! PFGeoPoint
+                        audioFile.getDataInBackgroundWithBlock({
+                            (soundData: NSData?, error: NSError?) -> Void in
+                            if (error == nil) {
+                                println("here!")
+                                var error: NSError?
+                                
+                                
+                                var closestPlayer = AVAudioPlayer(data: soundData, error: &error)
+                                var closestCoords = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
+                                var point1 = MKMapPointForCoordinate(self.currentLocation)
+                                var point2 = MKMapPointForCoordinate(closestCoords)
+                                let distance: CLLocationDistance = MKMetersBetweenMapPoints(point1, point2)
+                                println("distance: \(distance)")
+                                if (distance < 20){
+                                    println("close enough to play!")
+                                    closestPlayer.prepareToPlay()
+                                    closestPlayer.volume = 1.0
+                                    if (closestPlayer.playing != true) {
+                                        closestPlayer.volume = 1.0
+                                        closestPlayer.play()
+                                        println("playing")
+                                    }
+                                }
+                                
+                                
+                            } else {
+                                println("error")
+                            }
+                        })
+                    }
+                }
+            }
+        }
+    }
+
+    
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
-//        println(userLocation.coordinate.latitude)
-//        println(userLocation.coordinate.longitude)
+
+        currentLocation = CLLocationCoordinate2DMake(userLocation.coordinate.latitude, userLocation.coordinate.longitude)
+        getClosestSound()
+        //play closest sound if within min distance to closest coord
+        //if
     }
     
     override func didReceiveMemoryWarning() {

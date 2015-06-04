@@ -16,11 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3Nt-zJ-UH3">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3Nt-zJ-UH3">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3Nt-zJ-UH3" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="7Mo-G0-YGU"/>
+                            <constraint firstItem="3Nt-zJ-UH3" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="Q7A-ck-kX3"/>
+                            <constraint firstItem="3Nt-zJ-UH3" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Sha-lO-sNT"/>
+                            <constraint firstAttribute="trailing" secondItem="3Nt-zJ-UH3" secondAttribute="trailing" id="giN-j0-y9D"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Audionce" id="x3L-ve-qYO">
                         <barButtonItem key="leftBarButtonItem" title="Profile" id="NKo-NQ-YHR">
