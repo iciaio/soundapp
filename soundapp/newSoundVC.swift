@@ -127,6 +127,15 @@ class newSoundVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelega
     @IBAction func submitAudio(sender: AnyObject) {
         var error: NSError?
         
+        if (self.titleTextField.text == ""){
+            var alertView:UIAlertView = UIAlertView()
+            alertView.title = "No title"
+            alertView.message = "Please enter a title for your sound."
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
+        }
+        
         let fileData = NSData(contentsOfURL: soundFileURL)
         let parseFile = PFFile(name: "sound.aac", data: fileData!)
         var newSound = PFObject(className: "Sounds")

@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="PPk-vY-mIB">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Audionce-->
@@ -17,17 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="wOe-h4-i8W">
-                                <rect key="frame" x="-4" y="64" width="329" height="509"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3Nt-zJ-UH3">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="wOe-h4-i8W" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="Nxz-bh-Qfe"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="wOe-h4-i8W" secondAttribute="bottom" constant="-5" id="YZX-lg-krJ"/>
-                            <constraint firstItem="wOe-h4-i8W" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-20" id="hmb-u5-tLB"/>
-                            <constraint firstItem="wOe-h4-i8W" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="rRQ-bu-7a0"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Audionce" id="x3L-ve-qYO">
                         <barButtonItem key="leftBarButtonItem" title="Profile" id="NKo-NQ-YHR">
@@ -42,7 +35,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="mapView" destination="wOe-h4-i8W" id="ZRE-pn-V2t"/>
+                        <outlet property="mapView" destination="3Nt-zJ-UH3" id="kFe-oj-S8x"/>
                         <segue destination="IOW-zS-RXC" kind="modal" identifier="goto_login" id="skG-5F-pzo"/>
                     </connections>
                 </viewController>
@@ -490,7 +483,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="9vi-et-TO4"/>
-        <segue reference="wpq-Dp-2c7"/>
-        <segue reference="B6k-PE-Ijn"/>
+        <segue reference="skG-5F-pzo"/>
+        <segue reference="DNa-9M-t5Y"/>
     </inferredMetricsTieBreakers>
 </document>

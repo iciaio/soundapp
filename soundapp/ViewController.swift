@@ -22,7 +22,37 @@ class ViewController: UIViewController, MKMapViewDelegate   {
         locationManager.requestAlwaysAuthorization()
         mapView.showsUserLocation = true
         mapView.delegate = self
-        //mapView.setRegion(<#region: MKCoordinateRegion#>, animated: <#Bool#>)
+        var locValue:CLLocationCoordinate2D = locationManager.location.coordinate
+        mapView.setRegion(MKCoordinateRegionMakeWithDistance(locValue, 400, 400), animated: true)
+        
+        var soundQuery = PFQuery(className:"Sounds")
+        soundQuery.findObjectsInBackgroundWithBlock {
+            (sounds: [AnyObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                println("Successfully retrieved \(sounds!.count) sounds.")
+                for sound in sounds!{
+                    let titleString = sound["title"]! as! String
+                    let loc = sound["location"]! as! PFGeoPoint
+                    
+                    let soundAnnotation = Sound(title: titleString,
+                        locationName: "some location",
+                        discipline: "public",
+                        coordinate: CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude))
+                    
+                    self.mapView.addAnnotation(soundAnnotation)
+                }
+            } else {
+                // Log details of the failure
+                println("Error: \(error!) \(error!.userInfo!)")
+            }
+        }
+    }
+    
+    func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
+        println(userLocation.coordinate.latitude)
+        println(userLocation.coordinate.longitude)
     }
     
     override func didReceiveMemoryWarning() {
