@@ -138,27 +138,34 @@ class newSoundVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelega
         
             let fileData = NSData(contentsOfURL: soundFileURL)
             let parseFile = PFFile(name: "sound.aac", data: fileData!)
-            var newSound = PFObject(className: "Sounds")
-            PFGeoPoint.geoPointForCurrentLocationInBackground {
-                (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
-                if error == nil {
-                    newSound["file"] = parseFile
-                    newSound["title"] = self.titleTextField.text
-                    newSound["location"] = geoPoint
-                    newSound.saveInBackgroundWithBlock {
-                        (success: Bool, error: NSError?) -> Void in
-                        if (success) {
-                            println("submit pressed")
-                            self.player = nil
-                            self.recorder = nil
-                            self.playPauseButton.enabled = false
-                            self.submitButton.enabled = false
-                            self.titleTextField.text = ""
-                            self.performSegueWithIdentifier("to_main_from_submit", sender: self)
-                        } else {
-                            println("error saving sound")
+            parseFile.saveInBackgroundWithBlock {
+                (success: Bool, error: NSError?) -> Void in
+                if (success) {
+                    var newSound = PFObject(className: "Sounds")
+                    PFGeoPoint.geoPointForCurrentLocationInBackground {
+                        (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
+                        if error == nil {
+                            newSound["file"] = parseFile
+                            newSound["title"] = self.titleTextField.text
+                            newSound["location"] = geoPoint
+                            newSound.saveInBackgroundWithBlock {
+                                (success: Bool, error: NSError?) -> Void in
+                                if (success) {
+                                    println("submit pressed")
+                                    self.player = nil
+                                    self.recorder = nil
+                                    self.playPauseButton.enabled = false
+                                    self.submitButton.enabled = false
+                                    self.titleTextField.text = ""
+                                    self.performSegueWithIdentifier("to_main_from_submit", sender: self)
+                                } else {
+                                    println("error saving sound")
+                                }
+                            }
                         }
                     }
+                } else {
+                    println("error saving file")
                 }
             }
         }
