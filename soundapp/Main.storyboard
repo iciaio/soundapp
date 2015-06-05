@@ -102,6 +102,7 @@
                         <outlet property="recordStopButton" destination="dSc-x5-G6I" id="tUm-zf-HRK"/>
                         <outlet property="submitButton" destination="E1d-PT-m0H" id="h1g-Rb-eD1"/>
                         <outlet property="titleTextField" destination="vYH-QJ-nlQ" id="Iun-Fx-Cb2"/>
+                        <segue destination="vXZ-lx-hvc" kind="push" identifier="to_main_from_submit" id="fCo-6W-zNn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oxg-K1-41b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -187,7 +188,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3cY-lN-Fav" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1276" y="665"/>
+            <point key="canvasLocation" x="1276" y="713"/>
         </scene>
         <!--Friend List-->
         <scene sceneID="zJ6-IJ-Tam">
@@ -488,8 +489,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="DNa-9M-t5Y"/>
+        <segue reference="fCo-6W-zNn"/>
+        <segue reference="B6k-PE-Ijn"/>
+        <segue reference="wpq-Dp-2c7"/>
         <segue reference="9vi-et-TO4"/>
-        <segue reference="skG-5F-pzo"/>
     </inferredMetricsTieBreakers>
 </document>
