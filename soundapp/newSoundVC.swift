@@ -172,9 +172,12 @@ class newSoundVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelega
             }
         }
     }
-    
+    //faith is when you belive something determines the undeterminable, not that everything is inherently determinable (though perhaps not by us). the latter is science
+
     func addToUserSoundArray(soundObject : PFObject){
         let currentUser = PFUser.currentUser()
+        currentUser!.addObject(soundObject, forKey: "sounds")
+        currentUser!.saveInBackground()
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
