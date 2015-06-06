@@ -17,7 +17,8 @@ class ViewController: UIViewController, MKMapViewDelegate   {
     @IBOutlet weak var mapView: MKMapView!
     var locationManager: CLLocationManager!
     var currentLocation = CLLocationCoordinate2D()
-    var annotationDict = Dictionary<String, MKAnnotation>()
+    var oldAnnotationDict = Dictionary<String, MKAnnotation>()
+    var newAnnotationDict = Dictionary<String, MKAnnotation>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,13 +51,15 @@ class ViewController: UIViewController, MKMapViewDelegate   {
                     (sounds: [AnyObject]?, error: NSError?) -> Void in
                     
                     if error == nil {
+                        
                         // The find succeeded.
                         println("Successfully retrieved \(sounds!.count) sounds.")
                         for sound in sounds!{
                             
                             let identifier = sound.objectId! as String!
-                            if self.annotationDict[identifier] != nil {
+                            if self.oldAnnotationDict[identifier] != nil {
                                 println("a sound with this id found")
+                                self.newAnnotationDict[identifier] = self.oldAnnotationDict[identifier]
                             } else {
                                 //Make annotation.
                                 let titleString = sound["title"]! as! String
@@ -65,10 +68,17 @@ class ViewController: UIViewController, MKMapViewDelegate   {
                                     locationName: "some location",
                                     discipline: "public",
                                     coordinate: CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude))
-                                self.annotationDict[identifier] = soundAnnotation
+                                self.newAnnotationDict[identifier] = soundAnnotation
                                 self.mapView.addAnnotation(soundAnnotation)
                             }
                         }
+                        for (identifier, soundAnnotation) in self.oldAnnotationDict {
+                            if (self.newAnnotationDict[identifier] == nil) {
+                                self.mapView.removeAnnotation(soundAnnotation as MKAnnotation)
+                            }
+                        }
+                        self.oldAnnotationDict = self.newAnnotationDict
+                        self.newAnnotationDict = [:]
                     } else {
                         // Log details of the failure
                         println("Error: \(error!) \(error!.userInfo!)")

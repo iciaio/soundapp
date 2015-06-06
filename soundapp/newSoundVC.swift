@@ -13,8 +13,8 @@ import AVFoundation
 class newSoundVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     
 
-    @IBOutlet weak var recordStopButton: UIButton!
     @IBOutlet weak var playPauseButton: UIButton!
+    @IBOutlet weak var recordStopButton: UIButton!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
     
@@ -96,11 +96,12 @@ class newSoundVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelega
     }
     
     @IBAction func playAudio(sender: AnyObject) {
+        println("playing")
         if player != nil && player.playing { //STOP PLAYBACK
             println("pausing")
             playPauseButton.setTitle("Play", forState: UIControlState.Normal)
             player.pause()
-        
+            
         } else { //PLAYBACK
             println("playing")
             playPauseButton.setTitle("Pause", forState: UIControlState.Normal)
@@ -123,7 +124,7 @@ class newSoundVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelega
             }
         }
     }
-    
+
     @IBAction func submitAudio(sender: AnyObject) {
         var error: NSError?
         
@@ -157,6 +158,7 @@ class newSoundVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelega
                                     self.playPauseButton.enabled = false
                                     self.submitButton.enabled = false
                                     self.titleTextField.text = ""
+                                    self.addToUserSoundArray(newSound)
                                     self.performSegueWithIdentifier("to_main_from_submit", sender: self)
                                 } else {
                                     println("error saving sound")
@@ -171,13 +173,17 @@ class newSoundVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelega
         }
     }
     
+    func addToUserSoundArray(soundObject : PFObject){
+        let currentUser = PFUser.currentUser()
+    }
+    
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         if let touch = touches.first as? UITouch {
             self.view.endEditing(true)
         }
         super.touchesBegan(touches , withEvent:event)
     }
-    
+
     func setSessionPlayAndRecord() {
         let session:AVAudioSession = AVAudioSession.sharedInstance()
         var error: NSError?

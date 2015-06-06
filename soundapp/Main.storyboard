@@ -84,13 +84,13 @@
                                     <action selector="recordStopAudio:" destination="jtk-Bf-eDn" eventType="touchUpInside" id="7bV-Z3-zoP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4Z-cV-sgL">
-                                <rect key="frame" x="158" y="277" width="122" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cuh-YA-ZUK">
+                                <rect key="frame" x="216" y="277" width="46" height="30"/>
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="playAudio:" destination="jtk-Bf-eDn" eventType="touchUpInside" id="A63-zl-Izs"/>
+                                    <action selector="playAudio:" destination="jtk-Bf-eDn" eventType="touchUpInside" id="vDk-HC-OYO"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -98,7 +98,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add Sound" id="sIA-nm-YbF"/>
                     <connections>
-                        <outlet property="playPauseButton" destination="l4Z-cV-sgL" id="PnE-ur-xRV"/>
+                        <outlet property="playPauseButton" destination="Cuh-YA-ZUK" id="r6B-U9-Up8"/>
                         <outlet property="recordStopButton" destination="dSc-x5-G6I" id="tUm-zf-HRK"/>
                         <outlet property="submitButton" destination="E1d-PT-m0H" id="h1g-Rb-eD1"/>
                         <outlet property="titleTextField" destination="vYH-QJ-nlQ" id="Iun-Fx-Cb2"/>
