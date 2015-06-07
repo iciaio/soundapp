@@ -251,7 +251,7 @@ class newSoundVC: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelega
         soundFileURL = NSURL(fileURLWithPath: soundFilePath)!
         
         var recordSettings:[NSObject: AnyObject] = [
-            AVFormatIDKey: kAudioFormatAppleLossless,
+            AVFormatIDKey: kAudioFormatMPEG4AAC,
             AVEncoderAudioQualityKey : AVAudioQuality.Max.rawValue,
             AVEncoderBitRateKey : 320000,
             AVNumberOfChannelsKey: 2,

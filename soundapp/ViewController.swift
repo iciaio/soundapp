@@ -12,7 +12,7 @@ import MapKit
 import CoreLocation
 import AVFoundation
 
-class ViewController: UIViewController, MKMapViewDelegate   {
+class ViewController: UIViewController, MKMapViewDelegate, AVAudioPlayerDelegate   {
     
     @IBOutlet weak var mapView: MKMapView!
     var locationManager: CLLocationManager!
@@ -53,12 +53,10 @@ class ViewController: UIViewController, MKMapViewDelegate   {
                     if error == nil {
                         
                         // The find succeeded.
-                        println("Successfully retrieved \(sounds!.count) sounds.")
                         for sound in sounds!{
                             
                             let identifier = sound.objectId! as String!
                             if self.oldAnnotationDict[identifier] != nil {
-                                println("a sound with this id found")
                                 self.newAnnotationDict[identifier] = self.oldAnnotationDict[identifier]
                             } else {
                                 //Make annotation.
@@ -108,22 +106,27 @@ class ViewController: UIViewController, MKMapViewDelegate   {
                             (soundData: NSData?, error: NSError?) -> Void in
                             if (error == nil) {
                                 var error: NSError?
-                                
-                                
                                 var closestPlayer = AVAudioPlayer(data: soundData, error: &error)
-                                var closestCoords = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
-                                var point1 = MKMapPointForCoordinate(self.currentLocation)
-                                var point2 = MKMapPointForCoordinate(closestCoords)
-                                let distance: CLLocationDistance = MKMetersBetweenMapPoints(point1, point2)
-                                if (distance < 20){
-                                    //println("close enough to play!")
-//                                    closestPlayer.prepareToPlay()
-//                                    closestPlayer.volume = 1.0
+                                println("should be playing here")
+                                closestPlayer.delegate = self
+                                closestPlayer.prepareToPlay()
+                                closestPlayer.volume = 1.0
+                                closestPlayer.play()
+//                                var closestCoords = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
+//                                var point1 = MKMapPointForCoordinate(self.currentLocation)
+//                                var point2 = MKMapPointForCoordinate(closestCoords)
+//                                let distance: CLLocationDistance = MKMetersBetweenMapPoints(point1, point2)
+//                                if (distance < 20){
+//                                    println("distance: \(distance)")
 //                                    if (closestPlayer.playing != true) {
-//                                        closestPlayer.volume = 1.0
+//                                        closestPlayer.prepareToPlay()
+//                                        closestPlayer.volume = 3.0
 //                                        closestPlayer.play()
+//                                        println("playing")
+//                                        println(closestPlayer)
+//                                        println(sound!["title"])
 //                                    }
-                                }
+//                                }
                                 
                                 
                             } else {

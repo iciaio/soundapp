@@ -112,6 +112,7 @@
         <!--Profile-->
         <scene sceneID="0RU-KN-8Xe">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3cY-lN-Fav" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="khH-PW-dol" customClass="profileVC" customModule="soundapp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="udF-qf-LQA"/>
@@ -176,6 +177,12 @@
                                     <action selector="editProfilePicture:" destination="khH-PW-dol" eventType="touchUpInside" id="ZPl-yP-sgf"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nnB-BX-7hD">
+                                <rect key="frame" x="0.0" y="256" width="320" height="312"/>
+                                <connections>
+                                    <segue destination="ukt-T4-mDt" kind="embed" id="zee-Uu-uPS"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -186,9 +193,51 @@
                         <segue destination="IOW-zS-RXC" kind="modal" identifier="goto_login" id="wpq-Dp-2c7"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3cY-lN-Fav" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1276" y="713"/>
+        </scene>
+        <!--User Sounds TableVC-->
+        <scene sceneID="Bm9-C2-Osz">
+            <objects>
+                <tableViewController id="ukt-T4-mDt" customClass="userSoundsTableVC" customModule="soundapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="csQ-0W-AEe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="312"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell4" id="mbL-Ja-DVR" customClass="soundCell" customModule="soundapp" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mbL-Ja-DVR" id="Faq-jD-9Am">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Epc-mr-mAb">
+                                            <rect key="frame" x="27" y="14" width="159" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0q-He-Vor">
+                                            <rect key="frame" x="264" y="10" width="30" height="30"/>
+                                            <state key="normal" title="Play">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="soundTitle" destination="Epc-mr-mAb" id="AoN-d1-Oue"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ukt-T4-mDt" id="AEG-8D-W3S"/>
+                            <outlet property="delegate" destination="ukt-T4-mDt" id="SvF-8z-eSo"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="919-ZH-ADu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1692" y="1231"/>
         </scene>
         <!--Friend List-->
         <scene sceneID="zJ6-IJ-Tam">
@@ -214,7 +263,7 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OnD-b8-HhL">
-                                            <rect key="frame" x="19" y="11" width="42" height="21"/>
+                                            <rect key="frame" x="19" y="11" width="167" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -241,7 +290,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l4e-DG-25Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1835" y="726"/>
+            <point key="canvasLocation" x="1833" y="512"/>
         </scene>
         <!--Requested and Pending-->
         <scene sceneID="Mux-Kr-8P3">
@@ -350,7 +399,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cNW-Ht-hbx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2391" y="628"/>
+            <point key="canvasLocation" x="2255" y="512"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yZe-Em-24k">
@@ -489,9 +538,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="fCo-6W-zNn"/>
-        <segue reference="B6k-PE-Ijn"/>
-        <segue reference="wpq-Dp-2c7"/>
+        <segue reference="cSD-eZ-DKv"/>
         <segue reference="9vi-et-TO4"/>
+        <segue reference="wpq-Dp-2c7"/>
+        <segue reference="B6k-PE-Ijn"/>
     </inferredMetricsTieBreakers>
 </document>
